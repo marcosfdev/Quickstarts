@@ -1,7 +1,6 @@
 
 ### GitBestPractices README.md
 
-```markdown
 # Git Best Practices
 
 This folder contains guidelines for branching and feature development.
