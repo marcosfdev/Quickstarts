@@ -1,99 +1,38 @@
-# SvelteQuickStart
+# create-svelte
 
-## Setup
-```bash
-bun create svelte@latest my-app
-cd my-app
-bun  install
-```
-### Add dependandcies:
-```bash
-bun install typescript @sveltejs/adapter-auto tailwindcss postcss autoprefixer dotenv winston @sentry/browser @sentry/tracing
-```
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-## Configure Tailwind
-```bash
-bun tailwindcss init -p
+## Creating a project
 
-/svelte.config.js
-
-import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
-import adapter from "@sveltejs/adapter-auto";
-
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-  kit: {
-    // adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
-    // If your environment is not supported or you settled on a specific environment, switch out the adapter.
-    // See https://kit.svelte.dev/docs/adapters for more information about adapters.
-    adapter: adapter(),
-  },
-
-  preprocess: [vitePreprocess({})],
-};
-
-export default config;
-```
-### Tailwind Configuration
+If you're seeing this, you've probably already done this step. Congrats!
 
 ```bash
-/tailwind.config.js
+# create a new project in the current directory
+npm create svelte@latest
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./src/**/*.{html,js,svelte,ts}'],
-  theme: {
-    extend: {}
-  },
-  plugins: [
-    require('tailwindcss-plugins/pagination'),
-    require('tailwindcss-plugins/gradients'),
-    require('tailwindcss-plugins/animations'),
-    require('tailwindcss-plugins/keyframes'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-	  require('@tailwindcss/aspect-ratio'),	
-    require('autoprefixer'),
-  ]
-};
-
-```
-### Add Tailwind to .css or .pcss
-```bash 
-/src/lib/assets/global.css:
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-### Import to layout
- 
-```bash
-<script>
-  import "$lib/assets/styles/global.css";
-</script>
-
-<slot />
+# create a new project in my-app
+npm create svelte@latest my-app
 ```
 
-### Style a page
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+npm run dev
 
-<style lang="postcss">
-  :global(html) {
-    background-color: theme(colors.gray.100);
-  }
-</style>
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-### Start dev server
+## Building
+
+To create a production version of your app:
 
 ```bash
-bun  run dev
+npm run build
 ```
 
+You can preview the production build with `npm run preview`.
 
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
