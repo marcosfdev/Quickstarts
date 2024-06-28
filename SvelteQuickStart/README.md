@@ -2,7 +2,7 @@
 
 ## Setup
 ```bash
-npm create svelte@latest my-app
+bun create svelte@latest my-app
 cd my-app
 bun  install
 ```
@@ -16,7 +16,6 @@ bun install typescript @sveltejs/adapter-auto tailwindcss postcss autoprefixer d
 bun tailwindcss init -p
 
 /svelte.config.js
-
 
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import adapter from "@sveltejs/adapter-auto";
