@@ -27,8 +27,6 @@ aws deploy ..
 ```
 
 ## Additional Resources
-AWS Documentation
-https://docs.aws.amazon.com/
+[AWS Documentation](https://docs.aws.amazon.com/)
 
-AWS CLI Documentation
-https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
+[AWS CLI Documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
