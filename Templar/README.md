@@ -4,7 +4,7 @@
 # Templar
 
 This folder contains a base SvelteKit project setup with TypeScript, Tailwind CSS, dotenv, and enhanced error handling. 
-
+````markdown
 ## Project Structure
 Templar/
 │   ├── src/
@@ -35,7 +35,7 @@ Templar/
 ├── AWSQuickStart/
 │   └── README.md
 └── README.md
-
+````
 
 ## Setup Instructions
 ```bash
