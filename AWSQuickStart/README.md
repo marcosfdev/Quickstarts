@@ -10,15 +10,18 @@ This folder contains a QuickStart guide for setting up projects on Amazon Web Se
 1. **Install the AWS CLI:**
 
 ```bash
+
 pip install awscli
 
 # AWSQuickStart
 
 2. Configure the AWS CLI:
+
 ```bash
 aws configure
 
 3. Deploy an Application:
+
 ```bash
 aws deploy ..
 
