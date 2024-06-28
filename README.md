@@ -1,10 +1,11 @@
 # QuickStarts
 
 ## Table of Contents
-1. [Templar](./Templar/README.md) - Base SvelteKit Project with TypeScript, Tailwind CSS, dotenv, and enhanced error handling.
-2. [Git Best Practices](./GitBestPractices/README.md) - Guidelines for branching and feature development.
-3. [GCP and Firebase QuickStart](./GCPFirebaseQuickStart/README.md) - QuickStart for Google Cloud Platform and Firebase.
-4. [AWS QuickStart](./AWSQuickStart/README.md) - QuickStart for Amazon Web Services.
+1. [SvelteQuickStart](./SvelteQuickStart/README.md) - Base SvelteKit Project with TypeScript, Tailwind CSS.
+2. [Templar](./Templar/README.md) - Base SvelteKit Project with TypeScript, Tailwind CSS, dotenv, and enhanced error handling.
+3. [Git Best Practices](./GitBestPractices/README.md) - Guidelines for branching and feature development.
+4. [GCP and Firebase QuickStart](./GCPFirebaseQuickStart/README.md) - QuickStart for Google Cloud Platform and Firebase.
+5. [AWS QuickStart](./AWSQuickStart/README.md) - QuickStart for Amazon Web Services.
 
 ## Quick Command to Add a New QuickStart
 
