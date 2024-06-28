@@ -1,7 +1,6 @@
 
 ### Templar README.md
 
-```markdown
 # Templar
 
 This folder contains a base SvelteKit project setup with TypeScript, Tailwind CSS, dotenv, and enhanced error handling. 
@@ -41,16 +40,17 @@ Templar/
 ## Setup Instructions
 ```bash
 git clone https://github.com/marcosfdev/Templar.git
-
+```
 ### Install Dependencies
 
 ```bash
 bun install
-
+```
 ### Git Setup
 ```bash
 # Create and switch to a new feature branch
 git checkout -b feature/your-feature-name
+```
 
 # Add changes and commit
 ```bash
@@ -62,17 +62,21 @@ git checkout main
 git pull origin main
 git checkout feature/your-feature-name
 git merge main
-
+```
 # Push feature branch to remote
+```bash
 git push origin feature/your-feature-name
-
+```
 # After merging the pull request
+```bash
 git checkout main
 git pull origin main
+```
 
 ### Run the Project
 ```bash
 bun run dev
+```
 
 ## Additional Resources
 
