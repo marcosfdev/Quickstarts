@@ -1,7 +1,6 @@
 
 ### AWSQuickStart README.md
 
-```markdown
 # AWS QuickStart
 
 This folder contains a QuickStart guide for setting up projects on Amazon Web Services.
@@ -12,6 +11,7 @@ This folder contains a QuickStart guide for setting up projects on Amazon Web Se
 
 ```bash
 pip install awscli
+
 # AWSQuickStart
 
 2. Configure the AWS CLI:
