@@ -32,7 +32,7 @@ bun run build
 ```
 You can preview the production build with `bun run preview`.
 
-## 1. Install the dotenv, Winston and Sentry to add better logging and error handling
+## 1. Install dotenv, Winston and Sentry to add better logging and error handling
 
 Make sure you have installed the necessary packages:
 
