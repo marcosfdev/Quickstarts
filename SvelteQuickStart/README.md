@@ -47,7 +47,7 @@ After installing `winston`, `@sentry/browser`, and `@sentry/tracing`, follow the
 ## 2. Set Up Winston Logger
 Create a logger utility file using winston.
 
-Create Logger File
+### Create the Logger File
 Create src/lib/logger.ts:
 
 ```bash
@@ -65,9 +65,11 @@ export const logger = createLogger({
   ]
 });
 ```
+
 ## 3. Set Up Sentry for Monitoring
-Create Sentry Utility File
+### Create Sentry Utility File
 Create src/lib/sentry.ts:
+
 ```bash
 import * as Sentry from '@sentry/browser';
 import { BrowserTracing } from '@sentry/tracing';
@@ -82,7 +84,7 @@ export { Sentry };
 ```
 
 ## 4. Integrate Logger and Sentry with SvelteKit
-Update Global Error Handling
+### Update Global Error Handling
 Modify src/hooks.server.ts to incorporate both winston and sentry:
 
 ```bash
@@ -108,6 +110,7 @@ RAPID_API_KEY=your_rapid_api_key
 RAPID_API_URL=your_rapid_api_url
 SENTRY_DSN=your_sentry_dsn
 ```
+
 ## 6. Tracing Errors with Winston
 ### Locating Logs
 Winston logs errors to both the console and a file (error.log). You can find the error.log file in the root of your project directory.
@@ -124,8 +127,8 @@ tail -f error.log
 ```
 ## 7. Tracing Errors with Sentry
 ### Accessing Sentry
-Login to Sentry: Visit Sentry.io and log in to your account.
-Project Dashboard: Navigate to your project dashboard to view recent errors, issues, and performance metrics.
+1. Login to Sentry: Visit Sentry.io and log in to your account.
+2. Project Dashboard: Navigate to your project dashboard to view recent errors, issues, and performance metrics.
 
 ### Detailed Error Reports
 Sentry provides detailed error reports including stack traces, breadcrumbs, and contextual data, making it easier to trace and debug errors.
@@ -224,6 +227,7 @@ export const fetchData = async (endpoint: string) => {
   }
 };
 ```
+
 5. Deploy and Test:
 
 Deploy the updated code and test the API endpoint again. Monitor the console and logs for detailed error information.
