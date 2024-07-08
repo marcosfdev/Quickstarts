@@ -41,8 +41,8 @@ export async function load() {
 }
 ```
 5.  Display Data with Tailwind CSS:
-''`bash
-<!-- src/routes/+page.svelte -->
+   
+```bash <!-- src/routes/+page.svelte -->
 <script context="module" lang="ts">
   export { load } from './+page.js';
 </script>
