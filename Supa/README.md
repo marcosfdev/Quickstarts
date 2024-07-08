@@ -1,6 +1,193 @@
 # Supabase
 Quickstart for a Supabase DB app with push notifications with Sveltekit and Tailwind CSS.
 
+## Supabase Setup
+To get up and running ensure Docer is running and run the following commands to initialize and start the project:
+
+```bash
+// Inside the project directory  
+supabase init
+
+// Start
+supabase start
+
+// Stop
+supabase stop
+
+// Availible Commands:
+supabase projects api keys
+supabase projects create
+supabase projects delete
+supabase projects list
+
+// Database commands
+supabase db diff
+supabase db dump
+supabase db lint
+supabase db pull
+supabase db push
+supabase db reset
+supabase db start
+```
+
+## Setup Database and Migrations
+Follow these steps to set up the database via SQl command and create migrations and add data:
+
+```bash
+-- Users table
+CREATE TABLE users (
+  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  email text UNIQUE NOT NULL,
+  password text NOT NULL,
+  other_user_data jsonb 
+);
+
+-- Leagues table
+CREATE TABLE leagues (
+  id int PRIMARY KEY,  
+  name text UNIQUE NOT NULL,
+  sport text NOT NULL
+);
+
+-- Teams table
+CREATE TABLE teams (
+  id int PRIMARY KEY,  
+  name text NOT NULL,
+  league_id int REFERENCES leagues(id),
+  logo_url text
+);
+
+-- Players table
+CREATE TABLE players (
+  id int PRIMARY KEY, 
+  name text NOT NULL,
+  team_id int REFERENCES teams(id),
+  position text,
+  other_player_data jsonb
+);
+
+-- User Favorite Teams junction table
+CREATE TABLE user_favorite_teams (
+  user_id uuid REFERENCES users(id),
+  team_id int REFERENCES teams(id),
+  PRIMARY KEY (user_id, team_id)
+);
+
+-- Games table
+CREATE TABLE games (
+  id int PRIMARY KEY,  
+  home_team_id int REFERENCES teams(id),
+  away_team_id int REFERENCES teams(id),
+  league_id int REFERENCES leagues(id),
+  date timestamptz NOT NULL,
+  other_game_data jsonb
+);
+
+-- Game Events table (optional)
+CREATE TABLE game_events (
+  id int PRIMARY KEY,  
+  game_id int REFERENCES games(id),
+  type text NOT NULL,
+  time timestamptz NOT NULL,
+  player_id int REFERENCES players(id),
+  other_event_data jsonb
+);
+
+-- API Data Cache table
+CREATE TABLE api_data_cache (
+  league_id int REFERENCES leagues(id),
+  data_type text NOT NULL,
+  last_updated timestamptz NOT NULL,
+  data jsonb,
+  PRIMARY KEY (league_id, data_type)
+);
+```
+###  Create a new migration:
+```bash
+supabase migration new create_tables
+```
+This will create a new migration file in the migrations directory.
+
+Open the new migration file and replace the content with the following SQL commands based on your database:
+```
+-- Up SQL
+CREATE TABLE users (
+  id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+  email text UNIQUE NOT NULL,
+  password text NOT NULL,
+  other_user_data jsonb
+);
+
+CREATE TABLE leagues (
+  id int PRIMARY KEY,
+  name text UNIQUE NOT NULL,
+  sport text NOT NULL
+);
+
+CREATE TABLE teams (
+  id int PRIMARY KEY,
+  name text NOT NULL,
+  league_id int REFERENCES leagues(id),
+  logo_url text
+);
+
+CREATE TABLE players (
+  id int PRIMARY KEY,
+  name text NOT NULL,
+  team_id int REFERENCES teams(id),
+  position text,
+  other_player_data jsonb
+);
+
+CREATE TABLE user_favorite_teams (
+  user_id uuid REFERENCES users(id),
+  team_id int REFERENCES teams(id),
+  PRIMARY KEY (user_id, team_id)
+);
+
+CREATE TABLE games (
+  id int PRIMARY KEY,
+  home_team_id int REFERENCES teams(id),
+  away_team_id int REFERENCES teams(id),
+  league_id int REFERENCES leagues(id),
+  date timestamptz NOT NULL,
+  other_game_data jsonb
+);
+
+CREATE TABLE game_events (
+  id int PRIMARY KEY,
+  game_id int REFERENCES games(id),
+  type text NOT NULL,
+  time timestamptz NOT NULL,
+  player_id int REFERENCES players(id),
+  other_event_data jsonb
+);
+
+CREATE TABLE api_data_cache (
+  league_id int REFERENCES leagues(id),
+  data_type text NOT NULL,
+  last_updated timestamptz NOT NULL,
+  data jsonb,
+  PRIMARY KEY (league_id, data_type)
+);
+
+-- Down SQL
+DROP TABLE api_data_cache;
+DROP TABLE game_events;
+DROP TABLE games;
+DROP TABLE user_favorite_teams;
+DROP TABLE players;
+DROP TABLE teams;
+DROP TABLE leagues;
+DROP TABLE users;
+```
+
+Save the file and then run the migration:
+
+```
+supabase migration up
+```
+
 ## Example Integration with SvelteKit:
 1. Set Up Supabase:
 
