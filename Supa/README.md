@@ -187,6 +187,15 @@ Save the file and then run the migration:
 ```
 supabase migration up
 ```
+@@@ Migration Commands
+```bash
+$ supabase migration fetch
+$ supabase migration list
+$ supabase migration new
+$ supabase migration repair
+$ supabase migration squash
+$ supabase migration up
+```
 
 ## Example Integration with SvelteKit:
 1. Set Up Supabase:
