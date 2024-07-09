@@ -11,6 +11,9 @@ supabase init
 // Start
 supabase start
 
+// Link Remote to local
+supabase link
+
 // Stop
 supabase stop
 
@@ -28,6 +31,19 @@ supabase db pull
 supabase db push
 supabase db reset
 supabase db start
+```
+### Set an Env for the Access Token:
+
+From the dashboard in Settings locate your access token
+
+```bash
+export SUPABASE_ACCESS_TOKEN=<YOUR_ACCESS_TOKEN>
+```
+### Supabas Studio
+The Studio provides a graphical interface to view and manage your tables and their data.
+
+```bash
+http://localhost:54323 
 ```
 
 ## Setup Database and Migrations
@@ -187,7 +203,48 @@ Save the file and then run the migration:
 ```
 supabase migration up
 ```
-@@@ Migration Commands
+
+@@# Alter a local Table and push the change to Remote
+
+1. Add the column to your local project:
+First, generate a new migration:
+```bash
+supabase migration new add_cache_key_to_api_data_cache
+```
+2. Then, open the new migration file and add the following SQL commands:
+```bash
+// supbase/migrations/
+
+-- Up SQL
+ALTER TABLE api_data_cache ADD COLUMN cache_key text NOT NULL;
+
+-- Down SQL
+ALTER TABLE api_data_cache DROP COLUMN cache_key;
+```
+
+3. Save the file and then run the migration:
+```bash
+supabase migration up
+```
+4. Update the remote project:
+
+After making the changes to your local project, you can push the migration to your remote project:
+
+```bash
+supabase migration new --project-ref <YOUR_PROJECT_REF> add_cache_key_to_api_data_cache
+```
+This will create a new migration in your remote project with the same name and SQL commands as your local migration.
+
+5. Finally, you can run the migration on your remote project:
+```bash
+supabase migration up --project-ref <YOUR_PROJECT_REF>
+```
+This will apply the migration to your remote project.
+
+
+
+
+### Migration Commands
 ```bash
 $ supabase migration fetch
 $ supabase migration list
